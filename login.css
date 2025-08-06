@@ -1,0 +1,120 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #0d47a1, #1a237e); /* Dark blue gradient background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.login-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-header {
+    margin-bottom: 30px;
+}
+
+/* Gaya untuk logo Peruri utama yang baru */
+.login-header .peruri-main-logo {
+    height: 80px; /* Sesuaikan ukuran tinggi logo */
+    width: auto; /* Pertahankan rasio aspek */
+    margin-bottom: 20px; /* Jarak antara logo dan teks di bawahnya */
+}
+
+/* Gaya untuk logo yang sudah ada (jika ada, ini mungkin tidak diperlukan lagi jika Anda hanya punya satu logo) */
+.login-logo { /* Ini mungkin logo yang lebih kecil di header dashboard */
+    height: 60px; /* Adjust logo size */
+    margin-bottom: 15px;
+}
+
+
+.login-header h2 {
+    color: #0d47a1;
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+.login-header h3 {
+    color: #1a237e;
+    font-size: 1.2em;
+    font-weight: normal;
+    margin-top: 0;
+}
+
+.login-form .input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+}
+
+.login-form label i {
+    margin-right: 8px;
+    color: #0d47a1;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: calc(100% - 24px); /* Account for padding */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: #4fc3f7;
+    box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.3);
+}
+
+.login-button {
+    background: linear-gradient(45deg, #4fc3f7, #29b6f6); /* Turquoise gradient */
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(0, 188, 212, 0.4);
+}
+
+.login-message {
+    margin-top: 20px;
+    font-weight: 600;
+    color: #e53935; /* Red for error messages */
+}

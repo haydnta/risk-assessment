@@ -1,0 +1,693 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif; /* Main font */
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Light gray background */
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Header */
+.main-header {
+    background-color: #0d47a1; /* Dark blue/Navy */
+    color: #fff;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-header .user-info {
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Jarak antara teks "Halo, User!" dan tombol Logout */
+}
+
+.main-header .user-info i {
+    margin-right: 8px;
+}
+
+/* Gaya untuk tombol Logout */
+.logout-button {
+    background-color: #ef5350; /* Merah untuk Logout */
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f; /* Merah lebih gelap saat hover */
+}
+
+.main-header .logo {
+    display: flex; /* Arrange elements inside as flex items */
+    align-items: center; /* Vertically align */
+}
+
+.main-header .logo .header-logo {
+    height: 40px; /* Adjust height as needed */
+    width: auto;
+    margin-right: 10px; /* Space between logo and text */
+}
+
+.main-header .logo span {
+    color: white; /* Color for "Peruri Graph Analytics" text */
+    font-size: 1.3em; /* Font size for "Peruri Graph Analytics" text */
+    font-weight: normal; /* Normal weight, as "Identity Risk" will be bold */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.main-header .logo .header-sub-text { /* Target "Identity Risk" */
+    margin-left: 10px; /* Space between "Peruri Graph Analytics" and "Identity Risk" */
+    font-weight: bold; /* Make "Identity Risk" text bold */
+    color: white; /* Ensure text color is white */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+
+.main-header .user-info {
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.main-header .user-info i {
+    margin-right: 8px;
+}
+
+/* Input Section */
+.input-section {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.input-section h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a237e; /* Dark blue */
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+.input-section p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.input-group input {
+    flex-grow: 1;
+    padding: 15px 20px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #4fc3f7; /* Turquoise */
+}
+
+.input-group button {
+    background: linear-gradient(45deg, #4fc3f7, #29b6f6); /* Turquoise gradient */
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-group button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #4fc3f7;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* Result Section */
+.result-section {
+    margin-top: 40px;
+    padding: 30px 20px;
+    background-color: #fdfdfd;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.risk-summary-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+.risk-score-display {
+    text-align: center;
+    position: relative;
+}
+
+.score-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5em;
+    font-weight: 700;
+    color: #fff;
+    background: conic-gradient(#4CAF50 0% 30%, #FFEB3B 30% 60%, #F44336 60% 100%); /* Example gradient */
+    border: 10px solid #eee; /* Outer ring */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.score-circle span {
+    z-index: 2;
+    color: #333; /* Number text color */
+}
+/* Mask to create donut effect. Adjust background color to card color */
+.score-circle::after {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #fdfdfd; /* Card background */
+    z-index: 1;
+}
+
+
+.risk-summary-card h2#riskLevel {
+    font-size: 2em;
+    font-weight: 700;
+    margin-top: 15px;
+    text-transform: uppercase;
+    color: #F44336; /* Default: Red */
+}
+
+.input-details {
+    text-align: left;
+}
+
+.input-details p {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.recommendation-badge {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background-color: #ff9800; /* Orange for REVIEW_MANUAL */
+    color: #fff;
+    font-weight: 600;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+/* Fraud Indicators */
+.fraud-indicators-section {
+    margin-top: 40px;
+}
+
+.fraud-indicators-section h2 {
+    font-size: 1.8em;
+    color: #1a237e;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.indicators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.indicator-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-left: 6px solid; /* Will be filled by JS */
+}
+
+.indicator-card .icon-type {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.indicator-card .icon-type i {
+    font-size: 1.5em;
+    color: #4fc3f7; /* Default icon color */
+}
+
+.indicator-card .detail {
+    color: #666;
+    font-size: 0.95em;
+}
+
+/* Impact Colors for Indicator Cards */
+.indicator-card.impact-CRITICAL { border-left-color: #d32f2f; /* Dark Red */ }
+.indicator-card.impact-HIGH { border-left-color: #f57c00; /* Dark Orange */ }
+.indicator-card.impact-MEDIUM { border-left-color: #ffb300; /* Amber */ }
+.indicator-card.impact-LOW { border-left-color: #388e3c; /* Dark Green */ }
+
+
+/* Related Anomalies Section */
+.related-anomalies-section {
+    margin-top: 40px;
+}
+
+.related-anomalies-section h2 {
+    font-size: 1.8em;
+    color: #1a237e;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- Styles for Network Graph Container --- */
+#networkGraphContainer {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fcfcfc;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+#networkGraphContainer h3 {
+    font-size: 1.5em;
+    color: #1a237e;
+    margin-top: 0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Style for the graph element itself */
+#networkGraph {
+    width: 100%;
+    height: 500px; /* Default graph height */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+}
+
+
+.hub-summary {
+    background-color: #e3f2fd; /* Light Blue */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.hub-summary p {
+    margin: 0;
+    font-size: 1.05em;
+    color: #333;
+}
+
+.hub-summary p strong {
+    color: #1a237e;
+}
+
+.warning-box {
+    background-color: #ffebee; /* Very light red */
+    border: 1px solid #ef5350; /* Red border */
+    color: #c62828; /* Darker red text */
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.warning-box h3 {
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #c62828;
+}
+
+.warning-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.warning-box ul li {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+/* --- Styles for SINGLE_NIK Info Card --- */
+.single-nik-info-card {
+    background-color: #e8f5e9; /* Light green */
+    border: 1px solid #a5d6a7; /* Green border */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.single-nik-info-card h3 {
+    color: #2e7d32; /* Dark green */
+    margin-top: 0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.single-nik-info-card h4 {
+    color: #424242;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.single-nik-info-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.single-nik-info-card ul li {
+    background-color: #f0f4f7;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+.connected-users-table-container h3 {
+    font-size: 1.5em;
+    color: #1a237e;
+    margin-bottom: 15px;
+}
+
+.connected-users-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Styles for Sortable Table Headers --- */
+.connected-users-table th {
+    cursor: pointer; /* Indicate clickable header */
+    position: relative;
+    padding-right: 30px; /* Space for sorting icon */
+    white-space: nowrap; /* Prevent text wrapping if icon is too close */
+    padding: 12px 15px; /* Consistent padding */
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    background-color: #e0e7fd; /* Light blue header */
+    color: #1a237e;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.connected-users-table th .sort-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ccc; /* Default icon color */
+    transition: color 0.2s ease;
+}
+
+/* Icon color on hover */
+.connected-users-table th:hover .sort-icon {
+    color: #666;
+}
+
+/* Styles for active sorted column */
+.connected-users-table th.sorted-asc .sort-icon,
+.connected-users-table th.sorted-desc .sort-icon {
+    color: #4fc3f7; /* Active color (Turquoise) */
+}
+
+/* Optional: Visual effect for active sorted column */
+.connected-users-table th.sorted-asc,
+.connected-users-table th.sorted-desc {
+    background-color: #d1e2f7; /* Lighter background */
+}
+
+
+.connected-users-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.connected-users-table tbody tr:hover {
+    background-color: #f5f8ff; /* Light hover effect */
+}
+
+/* Table Visualizations */
+.dukcapil-status-success { color: #28a745; font-weight: 600; } /* Green */
+.dukcapil-status-fail { color: #dc3545; font-weight: 600; } /* Red */
+
+.score-bar-container {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 10px;
+    width: 100px;
+}
+
+.score-bar {
+    height: 100%;
+    border-radius: 5px;
+    background: linear-gradient(to right, #4CAF50, #F44336); /* Example */
+}
+
+.certificate-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #fff;
+}
+
+.certificate-tag-active { background-color: #4CAF50; } /* Green */
+.certificate-tag-not-active { background-color: #9e9e9e; } /* Gray */
+.certificate-tag-expired { background-color: #ff9800; } /* Orange */
+.certificate-tag-unknown { background-color: #7986cb; } /* Indigo */
+
+
+/* --- Styles for Raw API Response Modal/Overlay --- */
+.modal-overlay {
+    position: fixed; /* Fixed position */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+    display: flex; /* Center modal content */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above other elements */
+    backdrop-filter: blur(5px); /* Blur effect on background */
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    width: 90%; /* Modal width */
+    max-width: 800px; /* Maximum modal width */
+    height: 80%; /* Modal height */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Manage internal scrolling */
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #1a237e;
+    font-size: 1.5em;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 0; /* Remove default button padding */
+}
+
+.close-button:hover {
+    color: #333;
+}
+
+.modal-body {
+    flex-grow: 1; /* Take remaining space */
+    overflow-y: auto; /* Enable vertical scrolling */
+    background-color: #f8f8f8; /* Background for code */
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace; /* Monospace font for code */
+    font-size: 0.9em;
+    white-space: pre-wrap; /* Ensure text wraps if too long */
+    word-wrap: break-word; /* Prevent long words from overflowing */
+    color: #333;
+}
+
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 20px;
+    }
+    .main-header .user-info {
+        margin-top: 10px;
+    }
+    .input-group {
+        flex-direction: column;
+    }
+    .input-group input,
+    .input-group button {
+        width: 100%;
+    }
+    .risk-summary-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .risk-score-display {
+        margin-bottom: 20px;
+    }
+    .fraud-indicators-section .indicators-grid {
+        grid-template-columns: 1fr;
+    }
+    /* For responsive tables on mobile */
+    .connected-users-table-container table {
+        border: 0;
+    }
+    .connected-users-table-container table thead {
+        display: none;
+    }
+    .connected-users-table-container table tr {
+        margin-bottom: 10px;
+        display: block;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+    .connected-users-table-container table td {
+        display: block;
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    .connected-users-table-container table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px);
+        text-align: left;
+        font-weight: bold;
+        color: #555;
+    }
+    .connected-users-table th { 
+        padding-right: 15px;
+    }
+    .connected-users-table th .sort-icon { 
+        display: none; 
+    }
+    .modal-content {
+        width: 95%;
+        height: 90%;
+        padding: 15px;
+    }
+}

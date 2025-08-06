@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peruri Graph Analytics - Identity Risk Assessment</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="lib/vis-network.min.css">
+    <script type="text/javascript" src="lib/vis-network.min.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+            <!-- Logo Gambar -->
+            <img src="assets/images/logo.png" alt="Peruri Graph Analytics Logo" class="header-logo">
+            <!-- Teks di samping logo -->
+            <span class="company-name">Peruri Graph Analytics</span> 
+        </div>
+        <div class="user-info">
+            <i class="fas fa-user-circle"></i>
+            <span id="loggedInUserDisplay">Halo, Husna Aydadenta</span> <!-- ID baru untuk menampilkan username -->
+            <button id="logoutBtn" class="logout-button">Logout</button> <!-- Tombol Logout -->
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="input-section">
+            <h1>Real-time Identity Risk Assessment</h1>
+            <p>Masukkan NIK, Email, atau Nomor HP untuk melakukan asesmen risiko.</p>
+            <div class="input-group">
+                <input type="text" id="identityInput" placeholder="NIK / Email / Phone Number">
+                <button id="checkRiskBtn"><i class="fas fa-search"></i> Cek Risiko</button>
+            </div>
+            <div id="loadingIndicator" class="loading-spinner" style="display: none;"></div>
+        </section>
+
+        <section id="resultSection" class="result-section" style="display: none;">
+            <!-- Hasil API akan dimuat di sini oleh JavaScript -->
+            <div class="risk-summary-card">
+                <div class="risk-score-display">
+                    <div class="score-circle">
+                        <span id="overallScore">--</span>
+                    </div>
+                    <h2 id="riskLevel">-- RISK</h2>
+                </div>
+                <div class="input-details">
+                    <p><strong>NIK:</strong> <span id="displayNik">N/A</span></p>
+                    <p><strong>Email:</strong> <span id="displayEmail">N/A</span></p>
+                    <p><strong>Nomor HP:</strong> <span id="displayPhone">N/A</span></p>
+                    <div class="recommendation-badge" id="displayRecommendation"></div>
+                </div>
+            </div>
+
+            <!-- Tombol "Lihat Raw API Response" -->
+            <div class="raw-response-button-container">
+                <button id="viewRawApiBtn" class="primary-button"><i class="fas fa-code"></i> Lihat Raw API Response</button>
+            </div>
+
+            <div class="fraud-indicators-section">
+                <h2><i class="fas fa-exclamation-triangle"></i> Indikator Kecurangan Ditemukan</h2>
+                <div id="fraudIndicatorsContainer" class="indicators-grid">
+                    <!-- Kartu indikator akan dimuat di sini -->
+                </div>
+            </div>
+
+            <div class="related-anomalies-section">
+                <h2><i class="fas fa-link"></i> Detail Anomali dan Koneksi</h2>
+
+                <!-- Kontainer untuk Graf Jaringan (Vis.js) -->
+                <div id="networkGraphContainer" style="display: none;">
+                    <h3><i class="fas fa-project-diagram"></i> Visualisasi Jaringan</h3>
+                    <div id="networkGraph" style="height: 500px; border: 1px solid #ddd; border-radius: 8px; background-color: #fcfcfc;"></div>
+                </div>
+
+                <div id="hubDetailsContainer" class="hub-summary" style="display: none;">
+                    <p><strong>Tipe Hub:</strong> <span id="hubType">N/A</span></p>
+                    <p><strong>Nilai Hub:</strong> <span id="hubValue">N/A</span></p>
+                    <p><strong>Pengguna Terhubung:</strong> <span id="numConnectedUsers">N/A</span></p>
+                </div>
+                
+                <div id="problematicNikWarning" class="warning-box" style="display: none;">
+                    <h3><i class="fas fa-times-circle"></i> NIK Bermasalah Terhubung di Hub Ini</h3>
+                    <ul id="problematicNikList"></ul>
+                </div>
+
+                <div id="singleNikDetails" class="single-nik-info-card" style="display: none;">
+                    <h3><i class="fas fa-user-tag"></i> Informasi NIK Terkait</h3>
+                    <p><strong>ID Perusahaan Terdaftar:</strong> <span id="companyIdDisplay">N/A</span></p>
+                    
+                    <div id="nikConnectedEmails" style="display: none;">
+                        <h4><i class="fas fa-envelope"></i> Email Terhubung:</h4>
+                        <ul id="emailsForNikList"></ul>
+                    </div>
+                    
+                    <div id="nikConnectedPhones" style="display: none;">
+                        <h4><i class="fas fa-phone"></i> Nomor Telepon Terhubung:</h4>
+                        <ul id="phonesForNikList"></ul>
+                    </div>
+                </div>
+
+                <div id="connectedUsersTableWrapper" style="display: none;">
+                    <h3>Daftar Pengguna Terhubung</h3>
+                    <table class="connected-users-table">
+                        <thead>
+                            <tr>
+                                <th data-sort-key="nik">NIK <span class="sort-icon fas fa-sort"></span></th>
+                                <th data-sort-key="dukcapil_response">Dukcapil Response <span class="sort-icon fas fa-sort"></span></th>
+                                <th data-sort-key="dukcapil_score">Skor Dukcapil <span class="sort-icon fas fa-sort"></span></th>
+                                <th data-sort-key="certificate_status">Status Sertifikat <span class="sort-icon fas fa-sort"></span></th>
+                                <th data-sort-key="emails_connected">Email Lainnya</th> 
+                            </tr>
+                        </thead>
+                        <tbody id="connectedUsersTableBody">
+                            <!-- Baris pengguna akan dimuat di sini oleh JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal/Overlay untuk Menampilkan Raw API Response -->
+    <div id="rawApiResponseModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Raw API Response</h2>
+                <button id="closeModalBtn" class="close-button">&times;</button>
+            </div>
+            <pre id="rawApiResponsePre" class="modal-body"></pre>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

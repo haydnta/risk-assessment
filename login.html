@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Peruri Graph Analytics</title>
+    <link rel="stylesheet" href="risk-asses-v2/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <!-- Logo Peruri akan disisipkan di sini -->
+                <img src="risk-asses-v2/assets/images/peruri-logo.png" alt="Peruri Logo" class="peruri-main-logo">
+                <h2>Graph Analytics</h2>
+                <h3>Identity Risk Assessment</h3>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="input-group">
+                    <label for="username"><i class="fas fa-user"></i> Username</label>
+                    <input type="text" id="username" placeholder="Masukkan username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="password" placeholder="Masukkan password" required>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+                <p id="loginMessage" class="login-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="risk-asses-v2/login.js"></script>
+</body>
+</html>
