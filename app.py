@@ -6,22 +6,9 @@ from flask_cors import CORS
 import os
 from datetime import datetime # Import datetime for dynamic sync date
 
-URI = "neo4j://10.1.101.24:7687" 
+URI = "neo4j://neo4j:7680" 
 USERNAME = "username"
 PASSWORD = "password!"
-DATABASE = "verification"
-
-# app.py
-from flask import Flask, request, jsonify, send_from_directory, redirect, url_for, session
-from neo4j import GraphDatabase
-import traceback
-from flask_cors import CORS
-import os
-from datetime import datetime # Import datetime for dynamic sync date
-
-URI = "neo4j://10.1.101.24:7687" 
-USERNAME = "neo4j"
-PASSWORD = "P3ruri123!"
 DATABASE = "verification"
 
 driver = None
